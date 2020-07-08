@@ -3,34 +3,45 @@
     Removes the hostname from the Hosts file.
 
 .DESCRIPTION
-    The Remove-Host cmdlet removes the hostname from the Hosts file.
+    The Remove-Host function removes the hostname from the Hosts file.
+
+.INPUTS
+    String
+
+.OUTPUTS
+    None
 
 .NOTES
 
 Author: Jacob Donais
-Version: v1.0
+Version: v1.2
 Change Log:
     v1.0
         Initial build
     v1.1
         Improved RegEx compare to find and delete.
+    v1.2
+        Accept pipeline
 #>
 
 Function Remove-Host {
     [CmdletBinding()]Param (
-            [Parameter(
-                Mandatory=$true,
-                HelpMessage="Enter an IP address")]
-            [ValidateNotNullOrEmpty()]
-            [String]$HostName
-        )
+        [Parameter(
+            Mandatory = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Enter a host name")]
+        [ValidateNotNullOrEmpty()]
+        [String]$HostName
+    )
 
-    Process {
+    BEGIN {
+        Read-Host -Prompt "Press any key to continue or CTRL+C to quit" 
+    }
+
+    PROCESS {
         $Path = "$env:windir\System32\drivers\etc\hosts"
         $Pattern = '^(?<IP>\d{1,3}(\.\d{1,3}){3})\s+(' + $HostName + ')$'
         $Entries = @()
-
-        Write-Host "About to remove $HostName from hosts file..."
 
         try {
             (Get-Content -Path $Path)  | ForEach-Object {
@@ -38,15 +49,22 @@ Function Remove-Host {
                     $Entries += $_
                 }
                 else {
-                    Write-Host "$($Matches.IP) `t $HostName - removing from hosts file..." -ForegroundColor Yellow
+                    Write-Verbose "$($Matches.IP) `t $HostName - removing from hosts file..."
                 }
             }
-            Write-Host "Saving changes... " -NoNewline
-            $Entries | Out-File $Path
-            Write-Host "done"
         }
         catch {
-            Write-Host "failed; please try running as an admin or check file permissions for $Path" -ForegroundColor Red
+            Write-Host "failed; unable to read the hosts file" -ForegroundColor Red
         }
+        
+        
+        try {
+            Write-Verbose "Saving changes... "
+            $Entries | Out-File $Path
+        }
+        catch {
+            Write-Host "failed; unable to write to hosts file" -ForegroundColor Red
+        }
+        
     }
 }

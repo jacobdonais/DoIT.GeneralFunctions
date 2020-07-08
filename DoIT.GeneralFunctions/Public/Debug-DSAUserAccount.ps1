@@ -3,35 +3,38 @@
     Debugs a DSA profiles and points out obvious problems.
 
 .DESCRIPTION
-    The Debug-DSAUserAccount cmdlet output warnings if the account has been ADAutoCleanup, is an Elias account, is null or empty for 
+    The Debug-DSAUserAccount function output warnings if the account has been ADAutoCleanup, is an Elias account, is null or empty for 
     Name, UIN, NetID, Telephone Number, Department, Functional Group, Office, Descripition, Title, and eMail, account is locked and/or disabled,
     password is expired and/or over a year old, profile and home path missing and/or incorrect permissions.
 
 .NOTES
 
 Author: Jacob Donais
-Version: v1.0
+Version: v1.2
 Change Log:
     v1.0
         Initial build
     v1.1
         Improved report output for readability
+    v1.2
+        Added error action stop on test-path as certain file permissions are limited for student techs.
 #>
 
 Function Debug-DSAUserAccount {
     [CmdletBinding()]Param(
         [Parameter(
-            Mandatory=$true,
-            ValueFromPipeline=$true,
-            HelpMessage="Enter an AD username")]
+            Mandatory = $true,
+            ValueFromPipeline = $true,
+            ValueFromPipelineByPropertyName = $true,
+            HelpMessage = "Enter an AD username")]
         [ValidateNotNullOrEmpty()]
         [String]$UserName
     )
 
-    Process {
+    PROCESS {
         $ADAccount = Get-ADUser -Filter "SamAccountName -eq '$UserName'" -Properties *
         # Test if AD account exists
-        if ($ADAccount -eq $null) {
+        if ($null -eq $ADAccount) {
             Write-Error "AD account does not exist" -ErrorAction Stop
         }
 
@@ -110,7 +113,7 @@ Function Debug-DSAUserAccount {
             Write-Host "Account is disabled" -ForegroundColor Red
         }
 
-        if ($ADAccount.AccountExpirationDate -ne $NULL -and $ADAccount.AccountExpirationDate -lt (Get-Date)) {
+        if ($null -ne $ADAccount.AccountExpirationDate -and $ADAccount.AccountExpirationDate -lt (Get-Date)) {
             Write-Host "Account is expired" -ForegroundColor Red
         }
 
@@ -138,11 +141,8 @@ Function Debug-DSAUserAccount {
             if ([string]::IsNullOrEmpty($ProfilePath)) {
                 Write-Host "Profile path is null or empty" -ForegroundColor Yellow
             }
-            elseif ($ProfilePath -notmatch "%username%\\%username%") {
-                Write-Host "Profile path may be incorrect. Reconfigure to %username%\%username%" -ForegroundColor Yellow
-            }
-            elseif (Test-Path -Path ($ProfilePath = Split-Path $ProfilePath.replace("%username%",$ADAccount.samaccountname))) {
-                $ProfilePathPermissions = (Get-Acl $ProfilePath).Access | ?{$_.IdentityReference -match $ADAccount.SamAccountName} | Select IdentityReference,FileSystemRights
+            elseif (Test-Path -Path ($ProfilePath = Split-Path $ProfilePath.replace("%username%", $ADAccount.samaccountname)) -ErrorAction Stop) {
+                $ProfilePathPermissions = (Get-Acl $ProfilePath).Access | ? { $_.IdentityReference -match $ADAccount.SamAccountName } | Select IdentityReference, FileSystemRights
             
                 if ($ProfilePathPermissions) {
                     if ($ProfilePathPermissions.FileSystemRights -eq $ValProfPerms) {
@@ -173,10 +173,10 @@ Function Debug-DSAUserAccount {
             if ([string]::IsNullOrEmpty($HomeDirectory)) {
                 Write-Host "Home Directory is null or empty" -ForegroundColor Yellow
             }
-            elseif (Test-Path -Path $HomeDirectory) {
+            elseif (Test-Path -Path $HomeDirectory -ErrorAction Stop) {
                 $HomeFolders = Get-ChildItem -Path $HomeDirectory -Directory
                 foreach ($HomeFolder in $HomeFolders) {
-                    $HomeDirectoryPermissions = (Get-Acl $HomeFolder.FullName).Access | ?{$_.IdentityReference -match $ADAccount.SamAccountName} | Select IdentityReference,FileSystemRights
+                    $HomeDirectoryPermissions = (Get-Acl $HomeFolder.FullName).Access | ? { $_.IdentityReference -match $ADAccount.SamAccountName } | Select IdentityReference, FileSystemRights
                     if ($HomeDirectoryPermissions) {
                     
                         if ($HomeDirectoryPermissions.FileSystemRights -eq $ValHomePerms) {

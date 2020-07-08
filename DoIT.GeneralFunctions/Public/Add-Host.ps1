@@ -3,7 +3,15 @@
     Adds the hostname from the Hosts file.
 
 .DESCRIPTION
-    The Add-Host cmdlet adds the hostname with desired IP to the Hosts file.
+    This function will add a mapping of a hostname and a desired IP to the Window’s Hosts file. 
+    This change only affects your own computer without affecting how the domain is resolved. 
+    This particularly useful with the DNS record has been updated.
+
+.INPUTS
+    String
+
+.OUTPUTS
+    None
 
 .NOTES
 
@@ -25,17 +33,22 @@ Change Log:
 Function Add-Host {
     [CmdletBinding()]Param (
         [Parameter(
-            Mandatory=$true,
-            HelpMessage="Enter a host name")]
+            Mandatory = $true,
+            HelpMessage = "Enter a host name")]
         [ValidateNotNullOrEmpty()]
         [String]$HostName,
         [Parameter(
-            Mandatory=$true,
-            HelpMessage="Enter an IP address")]
+            Mandatory = $true,
+            HelpMessage = "Enter an IP address")]
         [ValidateNotNullOrEmpty()]
         [ipaddress]$DesiredIP
     )
-    Process {
+
+    BEGIN {
+        Read-Host -Prompt "Press any key to continue or CTRL+C to quit" 
+    }
+
+    PROCESS {
         $Path = "$env:windir\System32\drivers\etc\hosts"
         $Pattern = '^(?<IP>\d{1,3}(\.\d{1,3}){3})\s+(' + $HostName + ')$'
         $entry = ([string]$DesiredIP + "`t" + $HostName)
@@ -53,7 +66,7 @@ Function Add-Host {
                 Write-Host "done"
             }
             catch {
-                Write-Host "failed; please try running as an admin or check file permissions for $Path" -ForegroundColor Red
+                Write-Host "failed; unable to write to hosts file" -ForegroundColor Red
             }
         }
     }

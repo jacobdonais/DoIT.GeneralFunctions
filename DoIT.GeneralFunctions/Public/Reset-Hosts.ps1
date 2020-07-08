@@ -3,7 +3,13 @@
     Resets the Hosts file to the default.
 
 .DESCRIPTION
-    The Reset-Hosts cmdlet resets the Hosts file back to the default
+    The Reset-Hosts function resets the Hosts file back to the default
+
+.INPUTS
+    None
+
+.OUTPUTS
+    None
 
 .NOTES
 
@@ -20,16 +26,19 @@ Function Reset-Hosts {
     [CmdletBinding()]Param (
         )
 
-    Process {
+    BEGIN {
+        Read-Host -Prompt "Press any key to continue or CTRL+C to quit" 
         $Path = "$env:windir\System32\drivers\etc\hosts"
         $DefaultHostsPath = "$PSScriptRoot\..\Resources\Hosts\DefaultHosts"
+    }
 
+    PROCESS {
         Write-Host "About to reset Hosts file to default... " -NoNewline
         try {
             $defaultHost = Get-Content -Path $DefaultHostsPath
         }
         catch {
-            Write-Host "ERROR: 0x00000002 Please contact script manager" -ForegroundColor Red
+            Write-Host "failed; unable to read the default hosts file" -ForegroundColor Red
             break
         }
 
@@ -38,7 +47,7 @@ Function Reset-Hosts {
             Write-Host "done"
         }
         catch {
-            Write-Host "failed; please try running as an admin or check file permissions for $Path" -ForegroundColor Red
+            Write-Host "failed; unable to write to hosts file" -ForegroundColor Red
         }
         
     }
