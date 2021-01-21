@@ -1,4 +1,4 @@
-﻿<#
+<#
 .SYNOPSIS
     The Initialize-ComputerDeployment cmdlet will move the new computer to the
     OU of the old device and will apply a description to the new object.
@@ -80,6 +80,7 @@ Function Initialize-ComputerDeployment {
             }
             catch {
                 Write-Host "faled" -ForegroundColor Red
+                exit
             }
         }
 
@@ -87,11 +88,13 @@ Function Initialize-ComputerDeployment {
         Write-Host "Getting the desired OU... " -NoNewline
         try {
             $DesiredOU = ((Get-ADComputer -Filter "name -eq '$OldComputerName'" -ErrorAction Stop).distinguishedname -split ",",2)[1]
+            Write-Verbose "Desired OU : $DesiredOU"
             $DesiredPath = (Get-ADComputer -Filter "name -eq '$OldComputerName'" -Properties * -ErrorAction Stop).canonicalName -replace $OldComputerName,""
             Write-Host "done; $DesiredPath" -ForegroundColor Yellow
         }
         catch {
             Write-Host "failed" -ForegroundColor Red
+            exit
         }
 
         Write-Host "Moving new computer to the desired OU... " -NoNewline
@@ -101,6 +104,7 @@ Function Initialize-ComputerDeployment {
         }
         catch {
             Write-Host "faled" -ForegroundColor Red
+            exit
         }
 
         ### Disable old object
@@ -112,6 +116,7 @@ Function Initialize-ComputerDeployment {
             }
             catch {
                 Write-Host "faled" -ForegroundColor Red
+                exit
             }
         
         }
@@ -125,6 +130,7 @@ Function Initialize-ComputerDeployment {
             }
             catch {
                 Write-Host "faled" -ForegroundColor Red
+                exit
             }
         
         }
