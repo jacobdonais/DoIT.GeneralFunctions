@@ -12,7 +12,7 @@
 RootModule = 'DoIT.GeneralFunctions.psm1'
 
 # Version number of this module.
-ModuleVersion = '1.0'
+ModuleVersion = '2.0'
 
 # Supported PSEditions
 # CompatiblePSEditions = @()
@@ -27,7 +27,7 @@ Author = 'Jacob Donais'
 CompanyName = 'Student Affairs IT'
 
 # Copyright statement for this module
-Copyright = '(c) 2020 Jacob Donais. All rights reserved.'
+Copyright = '(c) 2021 Jacob Donais. All rights reserved.'
 
 # Description of the functionality provided by this module
 Description = 'General Powershell modules'
@@ -72,43 +72,43 @@ RequiredModules = @('ActiveDirectory',
 # NestedModules = @()
 
 # Functions to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no functions to export.
-FunctionsToExport = @('Add-Host',
-                      'Add-SoftwareRestrictionWhitelist',
-                      'Copy-DSAComputerOU',
-                      'Debug-DSAComputer',
-                      'Debug-DSAUserAccount',
-                      'Enter-ConfigurationManager',
-                      'Get-ComputerProductInfo',
-                      'Get-DiskSpace',
-                      'Get-DSAComputerGroups',
-                      'Get-DSALoggedOnUser',
-                      'Get-DSAUser',
-                      'Get-DSAUserGroups',
-                      'Get-Hosts',
-                      'Get-SoftwareRestrictionWhitelist',
-                      'Get-MonitorCount',
-                      'Get-MonitorInfo',
-                      'Initialize-ComputerDeployment',
-                      'Invoke-RemoteAssistance',
-                      'Invoke-SCCMClientAction',
-                      'Invoke-UserLogOff',
-                      'Move-DoITLoaner',
-                      'Remove-Host',
-                      'Remove-SoftwareRestrictionWhitelist',
-                      'Remove-WindowsProfile',
-                      'Rename-DSAComputer',
-                      'Reset-DoITLoaner',
-                      'Reset-DSAUserPassword',
-                      'Reset-Hosts',
-                      'Restart-DSAComputer',
-                      'Search-SCCMComputerByMAC',
-                      'Search-SCCMComputerByLastLogonUserName',
-                      'Set-DSAComputerDescription',
-                      'Test-ComputerConnection',
-                      'Test-ComputerFanError',
-                      'Test-MemberOf',
-                      'Test-RemoteDesktopUser',
-                      'Unlock-DSAUserAccount'
+FunctionsToExport = @(
+    'Add-Host',
+    'Add-SoftwareRestrictionWhitelist',
+    'Copy-DSAComputerOU',
+    'Debug-DSAComputer',
+    'Debug-DSAUserAccount',
+    'Enter-ConfigurationManager',
+    'Get-ComputerProductInfo',
+    'Get-DiskSpace',
+    'Get-DSAComputerGroups',
+    'Get-DSALoggedOnUser',
+    'Get-DSAUser',
+    'Get-DSAUserGroups',
+    'Get-Hosts',
+    'Get-MonitorCount',
+    'Get-MonitorInfo',
+    'Get-SoftwareRestrictionWhitelist',
+    'Initialize-ComputerDeployment',
+    'Invoke-RemoteAssistance',
+    'Invoke-SCCMClientAction',
+    'Invoke-UserLogOff',
+    'Move-DoITLoaner',
+    'Remove-Host',
+    'Remove-SoftwareRestrictionWhitelist',
+    'Remove-WindowsProfile',
+    'Rename-DSAComputer',
+    'Reset-DoITLoaner',
+    'Reset-DSAUserPassword',
+    'Reset-Hosts',
+    'Restart-DSAComputer',
+    'Search-SCCMComputerByLastLogonUserName',
+    'Search-SCCMComputerByMAC',
+    'Set-DSAComputerDescription',
+    'Test-ComputerFanError',
+    'Test-DSAUserMemberOf',
+    'Test-RemoteDesktopUser',
+    'Unlock-DSAUserAccount'
 )
 
 # Cmdlets to export from this module, for best performance, do not use wildcards and do not delete the entry, use an empty array if there are no cmdlets to export.

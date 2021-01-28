@@ -43,6 +43,7 @@ Function Add-Host {
         [ValidateNotNullOrEmpty()]
         [ipaddress]$DesiredIP
     )
+
     PROCESS {
         $Path = "$env:windir\System32\drivers\etc\hosts"
         $Pattern = '^(?<IP>\d{1,3}(\.\d{1,3}){3})\s+(' + $HostName + ')$'

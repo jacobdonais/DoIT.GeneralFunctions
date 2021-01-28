@@ -45,33 +45,10 @@ Function Test-RemoteDesktopUser {
 
 
     PROCESS {
-        Function private:Test-Membership {
-            [CmdletBinding()]Param (
-                [Parameter (Mandatory = $true,Position=0)]
-                [ValidateNotNullOrEmpty()]
-                [ValidateScript({(Get-ADUser -Filter "samaccountname -eq '$_'") -ne $null})]
-                [String] $UserName,
-                [Parameter (Mandatory = $true)]
-                [ValidateScript({(Get-ADGroup -Filter "SAMAccountName -eq '$_'") -ne $null})]
-                [String] $ADGroup
-            )
-
-            Process {
-                $members = Get-ADGroupMember -Identity $ADGroup -Recursive | Select -ExpandProperty SamAccountName
-
-                if ($members -contains $username) {
-                    return $true
-                }
-                else {
-                    return $false
-                }
-            }
-        }
-
         Write-Verbose "Testing if user is a member of RemoteApps..."
         $ADRemoteApps = "REMOTEAPPS - Users"
         try {
-            if (Test-Membership -UserName $UserName -ADGroup $ADRemoteApps) {
+            if (Test-DSAUserMemberOf -UserName $UserName -ADGroup $ADRemoteApps) {
                 Write-Verbose " $UserName is a member of $ADRemoteApps"
                 $isRDPUser = $true
             }
@@ -106,7 +83,7 @@ Function Test-RemoteDesktopUser {
                     $LocalRDPmembers | ForEach-Object {
                         $GroupName = $_.name -replace "DSA\\",""
                         if ($_.ObjectClass -eq "Group") {
-                            if (Test-Membership -UserName $UserName -ADGroup $GroupName) {
+                            if (Test-DSAUserMemberOf -UserName $UserName -ADGroup $GroupName) {
                                 $isLocalRDPUser = $true
                             }
                         }

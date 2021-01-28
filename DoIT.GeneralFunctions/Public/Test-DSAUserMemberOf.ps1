@@ -14,7 +14,7 @@ Change Log:
         Initial build
 #>
 
-Function Test-MemberOf {
+Function Test-DSAUserMemberOf {
     [CmdletBinding()]Param (
         [Parameter(
             Mandatory=$true,
@@ -37,9 +37,9 @@ Function Test-MemberOf {
         $members = Get-ADGroupMember -Identity $ADGroup -Recursive | Select -ExpandProperty SamAccountName
 
         if ($members -contains $username) {
-            Write-Host "$UserName is a member of $ADGroup" -ForegroundColor Yellow
+            return $true
         } else {
-            Write-Host "$UserName is not a member of $ADGroup" -ForegroundColor Red
+            return $false
         }
     }
 }

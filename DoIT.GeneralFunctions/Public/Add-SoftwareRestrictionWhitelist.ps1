@@ -35,15 +35,17 @@ Function Add-SoftwareRestrictionWhitelist {
         [String[]]$ComputerName
     )
 
-    PROCESS {
+    BEGIN {
         $SWExclusionName = "DoIT Software Restriction Policy Computer Exclusions"
         $SWExclusionGroup = Get-ADGroup -Filter "name -eq '$SWExclusionName'"
 
         if ($SWExclusionGroup -eq $null) {
-             Write-Host "0x00000001 Please contact script manager" -ForegroundColor Red
-             break
+             Write-Host "AD Group missing: $SWExclusionName" -ForegroundColor Red
+             exit
         }
+    }
 
+    PROCESS {
         foreach ($C in $ComputerName) {
             Write-Host "Adding $C to 'DoIT Software Restriction Policy Computer Exclusions' group... " -ForegroundColor Yellow -NoNewline
             try {

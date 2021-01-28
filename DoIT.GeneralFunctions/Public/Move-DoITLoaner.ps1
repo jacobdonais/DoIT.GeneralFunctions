@@ -37,6 +37,7 @@ Function Move-DoITLoaner {
         [ValidateScript({(Get-ADComputer -Filter "name -eq '$_'") -ne $null})]
         [String]$LoanerName
     )
+
     PROCESS {
         Write-Host "Getting Desired OU... " -NoNewline
         try {

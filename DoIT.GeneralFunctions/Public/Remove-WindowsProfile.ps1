@@ -50,6 +50,7 @@ Function Remove-WindowsProfile {
                          ($env:COMPUTERNAME -ne $_)})]
         [String[]]$ComputerName
     )
+
     PROCESS {
         foreach ($C in $ComputerName) {
 

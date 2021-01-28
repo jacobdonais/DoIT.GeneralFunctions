@@ -23,7 +23,16 @@ Function Verb-Noun {
     [CmdletBinding()]Param (
         
     )
+
+    BEGIN {
+    
+    }
+
     PROCESS {
         
+    }
+
+    END {
+    
     }
 }

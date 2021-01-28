@@ -28,7 +28,7 @@ Function Reset-Hosts {
 
     PROCESS {
         $Path = "$env:windir\System32\drivers\etc\hosts"
-        $DefaultHostsPath = "$PSScriptRoot\..\..\Resources\Hosts\DefaultHosts"
+        $DefaultHostsPath = "$PSScriptRoot\..\Resources\Hosts\DefaultHosts"
 
         Write-Host "About to reset Hosts file to default... " -NoNewline
         try {

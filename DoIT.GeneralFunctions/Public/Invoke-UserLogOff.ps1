@@ -61,6 +61,7 @@ Function Invoke-UserLogOff {
         [String]$ComputerName,
         [Switch]$Force
     )
+
     PROCESS {
         Write-Host "Attempting to logoff $UserName on $ComputerName... " -NoNewline
         $User = Get-DSALoggedOnUser -ComputerName $ComputerName | Where-Object {$_.USERNAME -eq $UserName}

@@ -74,6 +74,7 @@ Function Get-MonitorInfo {
         [ValidateScript({Test-Connection $_ -Quiet -Count 1})]
         [String[]]$Name = $env:COMPUTERNAME
     )
+
     PROCESS {
         foreach ($C in $Name) {
             if ($env:COMPUTERNAME -eq $C) {

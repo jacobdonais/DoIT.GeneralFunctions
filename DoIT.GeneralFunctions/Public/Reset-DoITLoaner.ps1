@@ -32,6 +32,7 @@ Function Reset-DoITLoaner {
         [ValidateScript({(Get-ADComputer -Filter "name -eq '$_'") -ne $null})]
         [String]$LoanerName
     )
+
     PROCESS {
         $LoanerOU = "OU=Desktop,OU=Windows 10 Computers,OU=Checkout Equipment,OU=Dept of Information Technology,OU=Departments,OU=Student Affairs,DC=dsa,DC=reldom,DC=tamu,DC=edu"
         

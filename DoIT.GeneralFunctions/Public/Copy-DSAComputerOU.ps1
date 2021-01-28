@@ -6,6 +6,9 @@
     The Copy-DSAComputerOU cmdlet will get the OU of the desired computer's OU and will set the
     computer input to that OU.
 
+.EXAMPLE
+    Get-ADComputer -filter "name -like 'DOIT-HP*'" | Copy-DSAComputerOU -DesiredComputerName DOIT-DELLLOAN-1
+
 .INPUTS
     String
 
@@ -26,10 +29,11 @@ Function Copy-DSAComputerOU {
     [CmdletBinding()]Param (
         [Parameter(
             Mandatory=$true,
-            HelpMessage="Enter the computer name")]
+            ValueFromPipelineByPropertyName=$true,
+            HelpMessage="Enter a computer name")]
+        [Alias('ComputerName', 'CN')]
         [ValidateNotNullOrEmpty()]
-        [ValidateScript({(Get-ADComputer -Filter "name -eq '$_'") -ne $null})]
-        [String]$ComputerName,
+        [String[]]$Name,
         [Parameter(
             Mandatory=$true,
             HelpMessage="Enter the computer name for the desired OU")]
@@ -38,7 +42,7 @@ Function Copy-DSAComputerOU {
         [String]$DesiredComputerName
     )
 
-    PROCESS {
+    BEGIN {
         Write-Host "Getting the desired OU... " -NoNewline
         try {
             $DesiredOU = ((Get-ADComputer -Filter "name -eq '$DesiredComputerName'" -ErrorAction Stop).distinguishedname -split ",",2)[1]
@@ -47,8 +51,11 @@ Function Copy-DSAComputerOU {
         }
         catch {
             Write-Host "failed" -ForegroundColor Red
+            exit
         }
+    }
 
+    PROCESS {
         Write-Host "Moving computer to the desired OU... " -NoNewline
         try {
             Get-ADComputer -Filter "name -eq '$ComputerName'" -ErrorAction Stop | Move-ADObject -TargetPath $DesiredOU -Confirm:$false -ErrorAction Stop

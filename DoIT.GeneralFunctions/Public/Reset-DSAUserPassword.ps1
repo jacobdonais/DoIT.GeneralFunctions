@@ -34,7 +34,7 @@ Function Reset-DSAUserPassword {
     )
 
     PROCESS {
-        $PasswordRequirement = "$PSScriptRoot\..\..\Resources\Users\PasswordRequirement"
+        $PasswordRequirement = "$PSScriptRoot\..\Resources\Users\PasswordRequirement"
 
         try {
 	        Set-ADAccountPassword -Identity $UserName -Reset -NewPassword (ConvertTo-SecureString -AsPlainText $Password -Force)

@@ -26,13 +26,13 @@ Change Log:
 
 Function Remove-Host {
     [CmdletBinding()]Param (
-            [Parameter(
-                Mandatory=$true,
-                ValueFromPipelineByPropertyName=$true,
-                HelpMessage="Enter a host name")]
-            [ValidateNotNullOrEmpty()]
-            [String]$HostName
-        )
+        [Parameter(
+            Mandatory=$true,
+            ValueFromPipelineByPropertyName=$true,
+            HelpMessage="Enter a host name")]
+        [ValidateNotNullOrEmpty()]
+        [String]$HostName
+    )
 
     PROCESS {
         $Path = "$env:windir\System32\drivers\etc\hosts"

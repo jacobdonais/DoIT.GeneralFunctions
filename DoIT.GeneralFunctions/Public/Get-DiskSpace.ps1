@@ -81,6 +81,7 @@ Function Get-DiskSpace {
         [ValidateScript({(Test-Connection $_ -Quiet -Count 1)})]
         [String[]]$Name = $env:COMPUTERNAME
     )
+
     PROCESS {
         foreach ($C in $Name) {
             if ($C -eq $env:COMPUTERNAME) {
