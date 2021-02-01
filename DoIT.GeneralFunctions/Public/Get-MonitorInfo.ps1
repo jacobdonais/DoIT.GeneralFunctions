@@ -3,7 +3,7 @@
     Returns basic information about monitors
 
 .DESCRIPTION
-    The Get-MonitorInfo cmdlet returns the manufacturer, name, and serial number
+    The Get-MonitorInfo function returns the manufacturer, name, and serial number
     of the monitors connected to a computer.
 
 .EXAMPLE

@@ -3,7 +3,7 @@
     Adds a computer to the software exclusions list.
 
 .DESCRIPTION
-    The Add-SoftwareRestrictionWhitelist cmdlet adds a computer to the software exclusions security group in AD. 
+    The Add-SoftwareRestrictionWhitelist function adds a computer to the software exclusions security group in AD. 
     A gpupdate is needed followed by a restart before the exclusion list is successfully applied to the computer.
 
 .NOTES

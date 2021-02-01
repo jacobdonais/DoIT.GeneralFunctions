@@ -3,7 +3,7 @@
     Reset the OU of a loaner back to checkout equipment.
 
 .DESCRIPTION
-    The Reset-DoITLoaner cmdlet will move a loaner AD object back to the DoIT checkout
+    The Reset-DoITLoaner function will move a loaner AD object back to the DoIT checkout
     equipment OU.
 
 .INPUTS

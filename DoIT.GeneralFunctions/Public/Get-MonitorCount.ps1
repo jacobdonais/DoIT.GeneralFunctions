@@ -3,7 +3,7 @@
     Gets the number of monitors connected to a workstation.
 
 .DESCRIPTION
-    The Get-MonitorCount cmdlet returns the number of monitors attached to a remote
+    The Get-MonitorCount function returns the number of monitors attached to a remote
     desktop.
 
 .EXAMPLE

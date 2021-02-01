@@ -3,7 +3,7 @@
     Checks if a user is in the remoteapps groups and if they're a local remote desktop user.
 
 .DESCRIPTION
-    The Test-RemoteDesktopUser cmdlet checks if the user is a member of the REMOTEAPPS - User group
+    The Test-RemoteDesktopUser function checks if the user is a member of the REMOTEAPPS - User group
     and checks if they're a member of the local remote desktop user group on the computer.
 
 .INPUTS
@@ -42,7 +42,6 @@ Function Test-RemoteDesktopUser {
         [ValidateScript({((Get-ADComputer -Filter "name -eq '$_'") -ne $null)})]
         [String[]]$ComputerName
     )
-
 
     PROCESS {
         Write-Verbose "Testing if user is a member of RemoteApps..."
@@ -125,4 +124,3 @@ Function Test-RemoteDesktopUser {
         }
     }
 }
-

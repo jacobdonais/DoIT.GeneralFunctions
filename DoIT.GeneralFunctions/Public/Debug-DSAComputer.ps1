@@ -3,7 +3,7 @@
     Debugs a DSA computer and points out obvious problems.
 
 .DESCRIPTION
-    The Debug-DSAComputer cmdlet output basic warnings on a given device
+    The Debug-DSAComputer function output basic warnings on a given device
 
 .EXAMPLE
     PS > Debug-DSAComputer -Name DOITTECH-227-6

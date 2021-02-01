@@ -3,7 +3,7 @@
     Resets an AD account to a temporary password and flags it to change on next login.
 
 .DESCRIPTION
-    The Reset-ADUserPassword cmdlet will reset the temporary password and flag it to change on next login.
+    The Reset-ADUserPassword function will reset the temporary password and flag it to change on next login.
     If needed, the user can reset their password at https://remoteapps.tamu.edu/RDWeb/Pages/en-US/password.aspx
 
 .NOTES

@@ -3,7 +3,7 @@
     Will import the SCCM PS module
 
 .DESCRIPTION
-    The Enter-ConfigurationManager cmdlet will import the SCCM PS module pack.
+    The Enter-ConfigurationManager function will import the SCCM PS module pack.
 
 .NOTES
 
@@ -22,6 +22,7 @@ Function Enter-ConfigurationManager {
     [CmdletBinding()]Param (
         
     )
+
     PROCESS {
         $ModuleName = "ConfigurationManager"
 

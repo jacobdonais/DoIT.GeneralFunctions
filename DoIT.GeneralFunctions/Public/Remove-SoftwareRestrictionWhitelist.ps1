@@ -3,7 +3,7 @@
     Removes a computer from the software exclusions list.
 
 .DESCRIPTION
-    The Remove-SoftwareRestrictionWhitelist cmdlet removes a computer from the exclusions list.
+    The Remove-SoftwareRestrictionWhitelist function removes a computer from the exclusions list.
 
 .NOTES
 

@@ -3,7 +3,7 @@
     Moves the Loaner to a different devices OU.
 
 .DESCRIPTION
-    The Move-DoITLoaner cmdlet move a loaner AD object to a desired computer's OU.
+    The Move-DoITLoaner function move a loaner AD object to a desired computer's OU.
 
 .INPUTS
     String

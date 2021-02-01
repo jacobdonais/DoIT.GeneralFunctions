@@ -3,7 +3,7 @@
     Debugs a DSA profiles and points out obvious problems.
 
 .DESCRIPTION
-    The Debug-DSAUserAccount cmdlet output warnings if the account has been ADAutoCleanup, is an Elias account, is null or empty for 
+    The Debug-DSAUserAccount function output warnings if the account has been ADAutoCleanup, is an Elias account, is null or empty for 
     Name, UIN, NetID, Telephone Number, Department, Functional Group, Office, Descripition, Title, and eMail, account is locked and/or disabled,
     password is expired and/or over a year old, profile and home path missing and/or incorrect permissions.
 

@@ -3,7 +3,7 @@
     Checks if a computer has a fan error
 
 .DESCRIPTION
-    This script will check if a given computer has a fan error and will return
+    This function will check if a given computer has a fan error and will return
     the serial number, computer name, and model name.
 
 .EXAMPLE

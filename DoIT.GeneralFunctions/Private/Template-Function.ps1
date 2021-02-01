@@ -3,7 +3,7 @@
     
 
 .DESCRIPTION
-    The _____ cmdlet ___.
+    The _____ function ___.
 
 .INPUTS
 

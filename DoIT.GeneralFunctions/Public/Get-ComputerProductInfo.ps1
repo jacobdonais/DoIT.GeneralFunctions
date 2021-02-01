@@ -3,7 +3,7 @@
     Gets serial number and model number of a computer
 
 .DESCRIPTION
-    The Get-ComputerProductInfo cmdlet gets the model and serial number
+    The Get-ComputerProductInfo function gets the model and serial number
     of a remote device.
 
 .EXAMPLE

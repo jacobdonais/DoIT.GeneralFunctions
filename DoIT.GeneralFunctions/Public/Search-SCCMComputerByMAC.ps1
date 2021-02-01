@@ -3,7 +3,7 @@
     Returns computer name by MAC address
 
 .DESCRIPTION
-    The Search-SCCMComputerByMAC cmdlet will return computer name(s) by
+    The Search-SCCMComputerByMAC function will return computer name(s) by
     the mac address.
 
 .NOTES

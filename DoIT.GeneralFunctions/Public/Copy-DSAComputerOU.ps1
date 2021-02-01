@@ -3,7 +3,7 @@
     Will copy the OU of another computer.
 
 .DESCRIPTION
-    The Copy-DSAComputerOU cmdlet will get the OU of the desired computer's OU and will set the
+    The Copy-DSAComputerOU function will get the OU of the desired computer's OU and will set the
     computer input to that OU.
 
 .EXAMPLE

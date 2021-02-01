@@ -3,7 +3,7 @@
     Test if a given username is part of a group.
 
 .DESCRIPTION
-    The Test-MemberOf cmdlet determines if a member if a part of an AD group.
+    The Test-MemberOf function determines if a member if a part of an AD group.
 
 .NOTES
 

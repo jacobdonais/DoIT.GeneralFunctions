@@ -3,7 +3,7 @@
     Removes the hostname from the Hosts file.
 
 .DESCRIPTION
-    The Remove-Host cmdlet removes the hostname from the Hosts file.
+    The Remove-Host function removes the hostname from the Hosts file.
 
 .INPUTS
     String

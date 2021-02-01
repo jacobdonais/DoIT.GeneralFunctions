@@ -3,7 +3,7 @@
     Resets the Hosts file to the default.
 
 .DESCRIPTION
-    The Reset-Hosts cmdlet resets the Hosts file back to the default
+    The Reset-Hosts function resets the Hosts file back to the default
 
 .INPUTS
     None

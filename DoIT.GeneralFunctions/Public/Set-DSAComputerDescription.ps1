@@ -3,7 +3,7 @@
     Will set the description for an AD computer object
 
 .DESCRIPTION
-    The Set-DSAComputerDescription cmdlet will set the AD computer object description.
+    The Set-DSAComputerDescription function will set the AD computer object description.
 
 .INPUTS
     String[]

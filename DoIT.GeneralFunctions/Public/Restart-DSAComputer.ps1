@@ -3,7 +3,7 @@
     Restarts a DSA computer
 
 .DESCRIPTION
-    The Restart-DSAComputer cmdlet will restart a computer and will report when the device is back on
+    The Restart-DSAComputer function will restart a computer and will report when the device is back on
     or if the device failed to communicate back after $TimeoutSeconds
 
 .NOTES

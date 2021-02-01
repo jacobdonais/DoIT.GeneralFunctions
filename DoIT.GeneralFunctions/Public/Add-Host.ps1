@@ -3,7 +3,7 @@
     Adds the hostname from the Hosts file.
 
 .DESCRIPTION
-    This cmdlet will add a mapping of a hostname and a desired IP to the Window’s Hosts file. 
+    This function will add a mapping of a hostname and a desired IP to the Window’s Hosts file. 
     This change only affects your own computer without affecting how the domain is resolved. 
     This particularly useful with the DNS record has been updated.
 

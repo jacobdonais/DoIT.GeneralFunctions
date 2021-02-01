@@ -3,7 +3,7 @@
     Will rename a computer and restart it.
 
 .DESCRIPTION
-    The Rename-DSAComputer cmdlet will rename a computer if no user is logged in or if the force switch is added.
+    The Rename-DSAComputer function will rename a computer if no user is logged in or if the force switch is added.
     It will also restart the computer.
 
 .EXAMPLE

@@ -3,7 +3,7 @@
     This will return the size and free space on a computer.
 
 .DESCRIPTION
-    The Get-DiskSpace cmdlet will provide the total space on a hard drive and the freespace.
+    The Get-DiskSpace function will provide the total space on a hard drive and the freespace.
 
 .EXAMPLE
     PS > Get-DiskSpace -Name DOITTECH-227-6

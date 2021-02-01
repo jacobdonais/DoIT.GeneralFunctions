@@ -3,7 +3,7 @@
     Queries a given AD computer for their security groups and copies to clipboard
 
 .DESCRIPTION
-    The Get-ComputerGroups cmdlet will return the groups for a given computer. If the
+    The Get-ComputerGroups function will return the groups for a given computer. If the
     computer exists in AD then it will set it to the clipboard.
 
 .EXAMPLE

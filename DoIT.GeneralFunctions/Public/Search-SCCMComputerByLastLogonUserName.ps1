@@ -3,7 +3,7 @@
     Returns computer name by last logon user name
 
 .DESCRIPTION
-    The Search-SCCMComputerByLastLogonUserName cmdlet will return computer name(s) by
+    The Search-SCCMComputerByLastLogonUserName function will return computer name(s) by
     the last logon user name.
 
 .NOTES

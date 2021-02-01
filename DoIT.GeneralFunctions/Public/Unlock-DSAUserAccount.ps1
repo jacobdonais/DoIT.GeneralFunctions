@@ -3,7 +3,7 @@
     Unlocks an AD account.
 
 .DESCRIPTION
-    The Unlock-ADUserAccount cmdlet will unlock the account. This does not reset the password.
+    The Unlock-ADUserAccount function will unlock the account. This does not reset the password.
 
 .NOTES
 

@@ -3,7 +3,7 @@
     Returns the logged on users for given workstation(s)
 
 .DESCRIPTION
-    The Get-DSALoggedOnUser cmdlet gets information about user session on a device. You can use this command to find out if a specific user
+    The Get-DSALoggedOnUser function gets information about user session on a device. You can use this command to find out if a specific user
     is logged in physically, remotely, or is disconnected/inactive.
 
 .EXAMPLE

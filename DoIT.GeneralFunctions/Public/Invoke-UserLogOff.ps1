@@ -3,7 +3,7 @@
     This cmdlet will logoff a user from a computer
 
 .DESCRIPTION
-    The Invoke-UserLogOff cmdlet will logoff a user from a workstation.
+    The Invoke-UserLogOff function will logoff a user from a workstation.
 
 .EXAMPLE
     *jacobd state is not active

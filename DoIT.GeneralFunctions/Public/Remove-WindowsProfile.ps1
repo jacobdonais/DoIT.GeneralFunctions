@@ -3,7 +3,7 @@
     Removes a profile from a remote device then restarts it.
 
 .DESCRIPTION
-    The Remove-Profile cmdlet will remove the profile and restart the computer if and only if
+    The Remove-Profile function will remove the profile and restart the computer if and only if
     there is no user logged in.
 
 .EXAMPLE

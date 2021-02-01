@@ -3,7 +3,7 @@
     Provide remote assistance with either a computer name or IP address
 
 .DESCRIPTION
-    The Invoke-RemoteAssistance cmdlet will determine if a computer is online and will attempt to startup
+    The Invoke-RemoteAssistance function will determine if a computer is online and will attempt to startup
     Microsoft Remote Assistance with it.
 
 .EXAMPLE

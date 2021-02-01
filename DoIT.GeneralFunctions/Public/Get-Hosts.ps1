@@ -3,7 +3,7 @@
     Returns the mapped hostname to IP address.
 
 .DESCRIPTION
-    The Get-Hosts cmdlet gets the human-friendly hostnames to numerical Internet Protocol (IP) addresses mapping.
+    The Get-Hosts function gets the human-friendly hostnames to numerical Internet Protocol (IP) addresses mapping.
 
 .INPUTS
     None

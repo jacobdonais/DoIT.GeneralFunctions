@@ -3,7 +3,7 @@
     Will run a client action on a remote computer
 
 .DESCRIPTION
-    The Run-SCCMClientAction cmdlet accepts a computer name and an array of 
+    The Run-SCCMClientAction function accepts a computer name and an array of 
     client actions to run.
 
 .NOTES
@@ -51,6 +51,7 @@ Function Invoke-SCCMClientAction {
                      'UpdateScan')] 
         [string[]]$ClientAction
     )
+
     PROCESS {
         foreach ($C in $Name) {
             try {

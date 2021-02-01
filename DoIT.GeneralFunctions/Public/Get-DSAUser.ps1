@@ -3,7 +3,7 @@
     Gets a DSA user account and displays relevent information.
 
 .DESCRIPTION
-    The Get-DSAUser cmdlet searches for an AD account based on either UIN, UserName,
+    The Get-DSAUser function searches for an AD account based on either UIN, UserName,
     NetID, or Name, and displays relevent information back.
 
 .NOTES

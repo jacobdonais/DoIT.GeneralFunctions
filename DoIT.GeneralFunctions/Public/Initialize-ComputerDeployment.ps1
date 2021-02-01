@@ -1,6 +1,6 @@
 <#
 .SYNOPSIS
-    The Initialize-ComputerDeployment cmdlet will move the new computer to the
+    The Initialize-ComputerDeployment function will move the new computer to the
     OU of the old device and will apply a description to the new object.
 
 .DESCRIPTION
@@ -54,6 +54,7 @@ Function Initialize-ComputerDeployment {
         [Parameter(Mandatory=$false)]
         [Switch]$Delete
     )
+
     PROCESS {
         ### Apply an AD description
         if ([string]::IsNullOrEmpty($Description)) {
@@ -170,6 +171,5 @@ Function Initialize-ComputerDeployment {
         catch {
             Write-Host "failed; No DNS Record exists for $NewComputerName. Please confirm the new computer is on the correct DNS servers." -ForegroundColor Red
         }
-
     }
 }
