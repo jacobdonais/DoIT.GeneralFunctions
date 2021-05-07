@@ -18,13 +18,6 @@ Change Log:
 Function Get-DSAUser {
     [CmdletBinding()]Param(
         [Parameter(
-            Mandatory = $true,
-            HelpMessage = "Pick UIN, UserName, NetID, or Name")]
-        [ValidateSet("UIN", "UserName", "NetID", "Name")]
-        [ValidateNotNullOrEmpty()]
-        [String]$Field,
-
-        [Parameter(
             Mandatory = $true, 
             ValueFromPipeline = $true,
             HelpMessage = "Enter a value")]
@@ -34,13 +27,14 @@ Function Get-DSAUser {
 
     PROCESS {
         foreach ($V in $Value) {
-            switch ($Field) {
-                UIN { $ADAccounts = Get-ADUser -Filter "EmployeeID -eq '$V'" -Properties * }
-                UserName { $ADAccounts = Get-ADUser -Filter "SamAccountName -eq '$V'" -Properties * }
-                NetID { $ADAccounts = Get-ADUser -Filter "EmployeeNumber -eq '$V'" -Properties * }
-                Name { $ADAccounts = Get-ADUser -Filter "Name -like '*$V*'" -Properties * }
-                default { Write-Error "Field is invalid" -ErrorAction Stop }
-            }
+            $ADAccounts = @()
+
+            $ADAccounts += Get-ADUser -Filter "EmployeeID -eq '$V'" -Properties *
+            $ADAccounts += Get-ADUser -Filter "SamAccountName -eq '$V'" -Properties *
+            $ADAccounts += Get-ADUser -Filter "EmployeeNumber -eq '$V'" -Properties *
+            $ADAccounts += Get-ADUser -Filter "Name -like '*$V*'" -Properties *
+
+            $ADAccounts = $ADAccounts | Select-Object -Unique
     
             foreach ($ADAccount in $ADAccounts) {
                 $accountReturn = [ordered]@{
